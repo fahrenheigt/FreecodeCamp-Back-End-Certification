@@ -13,9 +13,8 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-// Connect to MongoDB
-const MONGO_URI = "mongodb+srv://fahrenheigt:btdka6vy@cluster0.0jpsg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(MONGO_URI, {
+mongoose.mongoURI = process.env.MONGO_URI;
+mongoose.connect(mongoose.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
